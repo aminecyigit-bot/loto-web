@@ -1,23 +1,13 @@
-# loto-web
-# 🎰 Ceren'in Loto Web Uygulamasi
-
-Bu proje Spring Boot kullanilarak gelistirilmis basit bir loto web uygulamasidir.
-
-## 🚀 Kullanilan Teknolojiler
-- Java
-- Spring Boot
-- HTML / CSS / JavaScript
-
-## ▶️ Calistirma
-1. Projeyi klonla
-2. IDE'de `LotoApplication` sinifini calistir
-3. Tarayicidan `http://localhost:8080` adresine git
-
-## 🎯 Ozellikler
-- Rastgele loto sayilari
-- Kullanici tahmini
-- Eslesme hesaplama
-- Odul sistemi
-
-## 👩‍💻 Gelistiren
-Ceren
+Bu proje, Java ile yazılmış konsol tabanlı bir loto oyunudur. Kullanıcı 1–50 arasında 5 sayı seçer, sistem rastgele 5 sayı üretir ve kaç doğru tahmin ettiği ile kazandığı ödül miktarını gösterir.
+Gereksinimler
+-Java JDK 17 veya üzeri
+-Terminal veya Komut Satırı
+Nasıl Oynanır
+1–50 arasında 5 sayı girin
+Sistem rastgele 5 sayı üretir
+Konsolda aşağıdaki bilgiler gösterilir:
+Loto sayıları
+Kullanıcının sayıları
+Tuttuğu sayı
+Kazandığı ödül
+“Tekrar oynamak ister misiniz?” sorusuna cevap vererek oyunu yeniden oynayabilirsiniz
