@@ -1,0 +1,76 @@
+import java.util.*;
+
+public class ShirinLoto {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        boolean playAgain = true;
+
+        System.out.println("🎀 Şirin Loto 🎀");
+        System.out.println("Ödül Tablosu:");
+        System.out.println("2 sayı → 10₺");
+        System.out.println("3 sayı → 50₺");
+        System.out.println("4 sayı → 200₺");
+        System.out.println("5 sayı → 1000₺");
+
+        while (playAgain) {
+            // 1️⃣ Loto sayıları oluştur
+            Set<Integer> lotteryNumbers = new HashSet<>();
+            while (lotteryNumbers.size() < 5) {
+                lotteryNumbers.add(random.nextInt(50) + 1);
+            }
+
+            // 2️⃣ Kullanıcıdan sayı al
+            List<Integer> userNumbers = new ArrayList<>();
+            System.out.println("\n1-50 arasında 5 sayı girin:");
+            while (userNumbers.size() < 5) {
+                System.out.print("Sayı " + (userNumbers.size() + 1) + ": ");
+                try {
+                    int num = Integer.parseInt(scanner.nextLine());
+                    if (num < 1 || num > 50) {
+                        System.out.println("Lütfen 1-50 arasında sayı girin!");
+                    } else if (userNumbers.contains(num)) {
+                        System.out.println("Bu sayıyı zaten girdiniz!");
+                    } else {
+                        userNumbers.add(num);
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Lütfen geçerli bir sayı girin!");
+                }
+            }
+
+            // 3️⃣ Doğru tahmin sayısını hesapla
+            int correctCount = 0;
+            for (int num : userNumbers) {
+                if (lotteryNumbers.contains(num)) {
+                    correctCount++;
+                }
+            }
+
+            // 4️⃣ Ödülü hesapla
+            int prize = switch (correctCount) {
+                case 2 -> 10;
+                case 3 -> 50;
+                case 4 -> 200;
+                case 5 -> 1000;
+                default -> 0;
+            };
+
+            // 5️⃣ Sonuçları göster
+            System.out.println("\n🎉 Sonuçlar 🎉");
+            System.out.println("Loto Sayıları: " + lotteryNumbers);
+            System.out.println("Sizin Sayılarınız: " + userNumbers);
+            System.out.println("Tuttuğunuz Sayı: " + correctCount);
+            System.out.println("Kazandığınız Para: " + prize + "₺");
+
+            // 6️⃣ Tekrar oyna
+            System.out.print("\nTekrar oynamak ister misiniz? (E/H): ");
+            String answer = scanner.nextLine().trim().toUpperCase();
+            playAgain = answer.equals("E");
+        }
+
+        System.out.println("\nOyun bitti! 🎀 Teşekkürler!");
+        scanner.close();
+    }
+}
